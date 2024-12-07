@@ -214,7 +214,7 @@ clearButton.textContent = 'Clear';
 clearButton.style.margin = '15px';
 clearButton.style.padding = '10px 20px';
 clearButton.style.fontSize = '16px';
-document.body.appendChild(clearButton);
+
 
 clearButton.addEventListener('click', () => {
     grid.flat().forEach(tile => tile.isPink = false);
@@ -233,7 +233,7 @@ resetButton.style.backgroundColor = 'red';
 resetButton.style.color = 'white';
 resetButton.style.border = 'none';
 resetButton.style.borderRadius = '5px';
-document.body.appendChild(resetButton);
+
 
 resetButton.addEventListener('click', () => {
     grid.flat().forEach(tile => {
@@ -258,7 +258,7 @@ checkButton.style.backgroundColor = 'darkgreen';
 checkButton.style.color = 'white';
 checkButton.style.border = 'none';
 checkButton.style.borderRadius = '5px';
-document.body.appendChild(checkButton);
+
 
 checkButton.addEventListener('click', checkWord);
 
