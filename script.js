@@ -270,7 +270,7 @@ buttonsContainer.style.marginTop = '20px';
 
 // Append Reset first, then Clear, followed by Check
 buttonsContainer.append(resetButton, clearButton, checkButton);
-document.body.appendChild(buttonsContainer);
+;
 
 
 
