@@ -11,54 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let wordBox = [];
     let recentWords = [];
 
-if (!document.getElementById('clearButton')) {
-   
 
- const clearButton = document.createElement('button');
-    clearButton.id = 'clearButton';
-    clearButton.textContent = 'Clear';
-    clearButton.style.margin = '15px';
-    clearButton.style.padding = '10px 20px';
-    clearButton.style.fontSize = '16px';
-    document.body.appendChild(clearButton);
-}
-
-
-   if (!document.getElementById('resetButton')) {
  
- 
-    const resetButton = document.createElement('button');
-       resetButton.id = 'resetButton';
-    resetButton.textContent = 'Reset';
-    resetButton.style.margin = '15px';
-    resetButton.style.padding = '10px 20px';
-    resetButton.style.fontSize = '16px';
-    resetButton.style.backgroundColor = 'red';
-    resetButton.style.color = 'white';
-    resetButton.style.border = 'none';
-    resetButton.style.borderRadius = '5px';
-    
-
-           document.body.appendChild(resetButton);
-}
-
-if (!document.getElementById('checkButton')) {
-   
-
-    
-    const checkButton = document.createElement('button');
-    checkButton.id = 'checkButton';
-    checkButton.textContent = 'Check';
-    checkButton.style.margin = '15px';
-    checkButton.style.padding = '10px 20px';
-    checkButton.style.fontSize = '16px';
-    checkButton.style.backgroundColor = 'darkgreen';
-    checkButton.style.color = 'white';
-    checkButton.style.border = 'none';
-    checkButton.style.borderRadius = '5px';
-       document.body.appendChild(checkButton);
-}
-
   
   
   const dictionaryUrl = 'https://raw.githubusercontent.com/wordybirdy/docs/main/dictionary.json';
@@ -254,7 +208,75 @@ function updateStats() {
 }
 
 
-   
+    // Create Clear Button
+const clearButton = document.createElement('button');
+clearButton.textContent = 'Clear';
+clearButton.style.margin = '15px';
+clearButton.style.padding = '10px 20px';
+clearButton.style.fontSize = '16px';
+document.body.appendChild(clearButton);
+
+clearButton.addEventListener('click', () => {
+    grid.flat().forEach(tile => tile.isPink = false);
+    wordBox = [];
+    drawBoard();
+    updateWordBox();
+});
+
+// Create Reset Button
+const resetButton = document.createElement('button');
+resetButton.textContent = 'Reset';
+resetButton.style.margin = '15px';
+resetButton.style.padding = '10px 20px';
+resetButton.style.fontSize = '16px';
+resetButton.style.backgroundColor = 'red';
+resetButton.style.color = 'white';
+resetButton.style.border = 'none';
+resetButton.style.borderRadius = '5px';
+document.body.appendChild(resetButton);
+
+resetButton.addEventListener('click', () => {
+    grid.flat().forEach(tile => {
+        tile.isPink = false;
+        tile.isYellow = false;
+        tile.used = false;
+    });
+    recentWords = [];
+    wordBox = [];
+    updateRecentWordsList();
+    updateStats();
+    drawBoard();
+});
+
+// Create Check Button
+const checkButton = document.createElement('button');
+checkButton.textContent = 'Check';
+checkButton.style.margin = '15px';
+checkButton.style.padding = '10px 20px';
+checkButton.style.fontSize = '16px';
+checkButton.style.backgroundColor = 'darkgreen';
+checkButton.style.color = 'white';
+checkButton.style.border = 'none';
+checkButton.style.borderRadius = '5px';
+document.body.appendChild(checkButton);
+
+checkButton.addEventListener('click', checkWord);
+
+// Add spacing between buttons
+// Add spacing between buttons
+const buttonsContainer = document.createElement('div');
+buttonsContainer.style.textAlign = 'center';
+buttonsContainer.style.marginTop = '20px';
+
+// Append Reset first, then Clear, followed by Check
+buttonsContainer.append(resetButton, clearButton, checkButton);
+document.body.appendChild(buttonsContainer);
+
+
+
+const wordBoxDiv = document.createElement('div');
+wordBoxDiv.innerHTML = '<strong>Word Box:</strong> <span id="wordBox"></span>';
+document.body.appendChild(wordBoxDiv);
   
 
 
