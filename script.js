@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let wordBox = [];
     let recentWords = [];
 
+if (!document.getElementById('clearButton')) {
+   
 
  const clearButton = document.createElement('button');
     clearButton.textContent = 'Clear';
@@ -18,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     clearButton.style.padding = '10px 20px';
     clearButton.style.fontSize = '16px';
     document.body.appendChild(clearButton);
+}
 
     const resetButton = document.createElement('button');
     resetButton.textContent = 'Reset';
