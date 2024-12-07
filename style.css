@@ -131,3 +131,31 @@ th {
     justify-content: center;
     margin-top: 20px;
 }
+
+
+#totalScoreWrapper {
+    margin-top: 10px;
+    text-align: right;
+    position: absolute;
+    right: 20px;
+    top: 380px;
+}
+
+#dailyChallengeTopScoreWrapper {
+    margin-top: 10px;
+    text-align: right;
+    position: absolute;
+    right: 20px;
+    top: 420px; /* Adjust the positioning below the total score */
+}
+
+#totalScoreLabel, #dailyChallengeTopScoreLabel {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#totalScore, #dailyChallengeTopScore {
+    font-size: 20px;
+    font-weight: bold;
+}
+
