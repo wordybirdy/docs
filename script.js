@@ -208,20 +208,23 @@ function updateStats() {
 }
 
 
-    // Create Clear Button
-const clearButton = document.createElement('button');
-clearButton.textContent = 'Clear';
-clearButton.style.margin = '15px';
-clearButton.style.padding = '10px 20px';
-clearButton.style.fontSize = '16px';
-document.body.appendChild(clearButton);
+if (!document.getElementById('clearButton')) {
+    // Create clearButton
+    const clearButton = document.createElement('button');
+    clearButton.textContent = 'Clear';
+    clearButton.id = 'clearButton'; // Ensure the button has this ID
+    clearButton.style.margin = '15px';
+    clearButton.style.padding = '10px 20px';
+    clearButton.style.fontSize = '16px';
+    document.body.appendChild(clearButton);
 
-clearButton.addEventListener('click', () => {
-    grid.flat().forEach(tile => tile.isPink = false);
-    wordBox = [];
-    drawBoard();
-    updateWordBox();
-});
+    clearButton.addEventListener('click', () => {
+        grid.flat().forEach(tile => tile.isPink = false);
+        wordBox = [];
+        drawBoard();
+        updateWordBox();
+    });
+}
 
 // Create Reset Button
 const resetButton = document.createElement('button');
