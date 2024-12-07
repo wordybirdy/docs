@@ -22,6 +22,10 @@ if (!document.getElementById('clearButton')) {
     document.body.appendChild(clearButton);
 }
 
+
+   if (!document.getElementById('resetButton')) {
+ 
+ 
     const resetButton = document.createElement('button');
     resetButton.textContent = 'Reset';
     resetButton.style.margin = '15px';
@@ -31,8 +35,15 @@ if (!document.getElementById('clearButton')) {
     resetButton.style.color = 'white';
     resetButton.style.border = 'none';
     resetButton.style.borderRadius = '5px';
-    document.body.appendChild(resetButton);
+    
 
+           document.body.appendChild(resetButton);
+}
+
+if (!document.getElementById('checkButton')) {
+   
+
+    
     const checkButton = document.createElement('button');
     checkButton.textContent = 'Check';
     checkButton.style.margin = '15px';
@@ -42,7 +53,8 @@ if (!document.getElementById('clearButton')) {
     checkButton.style.color = 'white';
     checkButton.style.border = 'none';
     checkButton.style.borderRadius = '5px';
-    document.body.appendChild(checkButton);
+       document.body.appendChild(checkButton);
+}
 
   
   
