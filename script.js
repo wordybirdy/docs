@@ -1,25 +1,3 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const canvas = document.getElementById('gameCanvas');
-    const ctx = canvas.getContext('2d');
-
-    const rows = 6;
-    const cols = 6;
-    const tileSize = canvas.width / cols;
-
-    let dictionary = [];
-    let grid = [];
-    let wordBox = [];
-    let recentWords = [];
-
-    const dictionaryUrl = 'https://raw.githubusercontent.com/wordybirdy/docs/main/dictionary.json';
-    fetch(dictionaryUrl)
-        .then(response => response.json())
-        .then(data => {
-            dictionary = data.words;
-            initBoard();
-        })
-        .catch(error => console.error('Error loading dictionary:', error));
-
 
     document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('gameCanvas');
