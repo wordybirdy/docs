@@ -15,6 +15,7 @@ if (!document.getElementById('clearButton')) {
    
 
  const clearButton = document.createElement('button');
+    clearButton.id = 'clearButton';
     clearButton.textContent = 'Clear';
     clearButton.style.margin = '15px';
     clearButton.style.padding = '10px 20px';
@@ -27,6 +28,7 @@ if (!document.getElementById('clearButton')) {
  
  
     const resetButton = document.createElement('button');
+       resetButton.id = 'resetButton';
     resetButton.textContent = 'Reset';
     resetButton.style.margin = '15px';
     resetButton.style.padding = '10px 20px';
@@ -45,6 +47,7 @@ if (!document.getElementById('checkButton')) {
 
     
     const checkButton = document.createElement('button');
+    checkButton.id = 'checkButton';
     checkButton.textContent = 'Check';
     checkButton.style.margin = '15px';
     checkButton.style.padding = '10px 20px';
