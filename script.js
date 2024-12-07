@@ -1,5 +1,4 @@
-
-    document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
 
@@ -20,8 +19,6 @@
             initBoard();
         })
         .catch(error => console.error('Error loading dictionary:', error));
-
-    // Your existing functions like initBoard(), fetchDailyGrid(), generateRandomGrid() remain the same.
 
     // Create Buttons (This should be done only once)
     if (!document.getElementById('clearButton')) {
@@ -89,11 +86,14 @@
     buttonsContainer.style.marginTop = '20px';
     buttonsContainer.append(resetButton, clearButton, checkButton);
     document.body.appendChild(buttonsContainer);
-    
+
     // Word Box, Canvas setup, and other functions remain unchanged.
-});
 
+    const wordBoxDiv = document.createElement('div');
+    wordBoxDiv.innerHTML = '<strong>Word Box:</strong> <span id="wordBox"></span>';
+    document.body.appendChild(wordBoxDiv);
 
+    // Fetch daily grid and initialize the board
     function fetchDailyGrid() {
         const today = new Date().toISOString().slice(0, 10);
         const gridUrl = 'https://raw.githubusercontent.com/wordybirdy/docs/main/grids.json';
