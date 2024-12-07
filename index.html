@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Match-3 Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="header">
+    <img src="https://drive.google.com/thumbnail?id=1V7-V05-PvsulCI-Hzjax-InaJkMClovm" alt="Game Header">
+  </div>
+
+  <div id="gameContainerWrapper">
+
+    <div id="recentWordsBox">
+      <h3>Recent Words</h3>
+      <ul id="recentWordsList"></ul>
+    </div>
+    <div id="gameContainer">
+      <canvas id="gameCanvas" width="400" height="400"></canvas>
+    </div>
+  </div>
+
+  <div id="totalScoreWrapper">
+    <div id="totalScoreLabel">Total Score</div>
+    <div id="totalScore">0</div>
+  </div>
+
+  <div id="stats">
+
+    <table>
+      <tr>
+        <th>Letters Used</th>
+        <th>Words Created</th>
+        <th>Remaining Letters</th>
+      </tr>
+      <tr>
+        <td id="lettersUsed">0</td>
+        <td id="wordsCreated">0</td>
+        <td id="remainingLetters">0</td>
+      </tr>
+    </table>
+
+    <div id="totalScore">
+
+      <div id="totalScore" style="font-size: 20px; font-weight: bold;"></div>
+
+    </div>
+  </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+
+</html>
