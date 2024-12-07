@@ -256,5 +256,67 @@ document.addEventListener('DOMContentLoaded', () => {
     wordBoxDiv.innerHTML = '<strong>Word Box:</strong> <span id="wordBox"></span>';
     document.body.appendChild(wordBoxDiv);
 
+
+    // Create Daily Challenge Button
+const dailyChallengeButton = document.createElement('button');
+dailyChallengeButton.textContent = 'Daily Challenge';
+dailyChallengeButton.style.position = 'absolute';
+dailyChallengeButton.style.top = '60px'; // Positioned just below Practice Mode
+dailyChallengeButton.style.left = '10px';
+dailyChallengeButton.style.marginBottom = '10px';
+dailyChallengeButton.style.padding = '10px 20px';
+dailyChallengeButton.style.fontSize = '16px';
+dailyChallengeButton.style.backgroundColor = '#007BFF';
+dailyChallengeButton.style.color = 'white';
+dailyChallengeButton.style.border = 'none';
+dailyChallengeButton.style.borderRadius = '5px';
+document.body.appendChild(dailyChallengeButton);
+
+// Add event listener for the Daily Challenge button
+dailyChallengeButton.addEventListener('click', () => {
+    fetchDailyGrid()
+        .then(fetchedGrid => {
+            grid = [];
+            for (let x = 0; x < cols; x++) {
+                grid[x] = [];
+                for (let y = 0; y < rows; y++) {
+                    grid[x][y] = {
+                        letter: fetchedGrid[x][y],
+                        isPink: false,
+                        isYellow: false,
+                        used: false
+                    };
+                }
+            }
+            drawBoard(); // Redraw the board with the daily challenge grid
+        })
+        .catch(error => console.error("Error loading daily challenge grid:", error));
+  
+  // Show the dateDiv again when Daily Challenge button is clicked
+    dateDiv.style.display = 'block';
+    
+});
+
+  
+
+
+    // Create a div for the date
+const dateDiv = document.createElement('div');
+dateDiv.style.position = 'absolute';
+dateDiv.style.top = '110px';
+dateDiv.style.left = '10px';
+dateDiv.style.fontSize = '16px';
+dateDiv.style.color = 'black';
+
+// Format today's date as DD,MM,YY
+const today = new Date();
+const formattedDate = `${today.getDate().toString().padStart(2, '0')},${(today.getMonth() + 1).toString().padStart(2, '0')},${today.getFullYear().toString().slice(-2)}`;
+
+// Set the text content
+dateDiv.textContent = `Daily Challenge: ${formattedDate}`;
+
+// Add the div to the body
+document.body.appendChild(dateDiv);
+
     initBoard();
 });
