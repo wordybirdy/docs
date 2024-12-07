@@ -20,6 +20,102 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => console.error('Error loading dictionary:', error));
 
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const rows = 6;
+    const cols = 6;
+    const tileSize = canvas.width / cols;
+
+    let dictionary = [];
+    let grid = [];
+    let wordBox = [];
+    let recentWords = [];
+
+    const dictionaryUrl = 'https://raw.githubusercontent.com/wordybirdy/docs/main/dictionary.json';
+    fetch(dictionaryUrl)
+        .then(response => response.json())
+        .then(data => {
+            dictionary = data.words;
+            initBoard();
+        })
+        .catch(error => console.error('Error loading dictionary:', error));
+
+    // Your existing functions like initBoard(), fetchDailyGrid(), generateRandomGrid() remain the same.
+
+    // Create Buttons (This should be done only once)
+    if (!document.getElementById('clearButton')) {
+        const clearButton = document.createElement('button');
+        clearButton.textContent = 'Clear';
+        clearButton.id = 'clearButton';
+        clearButton.style.margin = '15px';
+        clearButton.style.padding = '10px 20px';
+        clearButton.style.fontSize = '16px';
+        document.body.appendChild(clearButton);
+
+        clearButton.addEventListener('click', () => {
+            grid.flat().forEach(tile => tile.isPink = false);
+            wordBox = [];
+            drawBoard();
+            updateWordBox();
+        });
+    }
+
+    if (!document.getElementById('resetButton')) {
+        const resetButton = document.createElement('button');
+        resetButton.textContent = 'Reset';
+        resetButton.id = 'resetButton';
+        resetButton.style.margin = '15px';
+        resetButton.style.padding = '10px 20px';
+        resetButton.style.fontSize = '16px';
+        resetButton.style.backgroundColor = 'red';
+        resetButton.style.color = 'white';
+        resetButton.style.border = 'none';
+        resetButton.style.borderRadius = '5px';
+        document.body.appendChild(resetButton);
+
+        resetButton.addEventListener('click', () => {
+            grid.flat().forEach(tile => {
+                tile.isPink = false;
+                tile.isYellow = false;
+                tile.used = false;
+            });
+            recentWords = [];
+            wordBox = [];
+            updateRecentWordsList();
+            updateStats();
+            drawBoard();
+        });
+    }
+
+    if (!document.getElementById('checkButton')) {
+        const checkButton = document.createElement('button');
+        checkButton.textContent = 'Check';
+        checkButton.id = 'checkButton';
+        checkButton.style.margin = '15px';
+        checkButton.style.padding = '10px 20px';
+        checkButton.style.fontSize = '16px';
+        checkButton.style.backgroundColor = 'darkgreen';
+        checkButton.style.color = 'white';
+        checkButton.style.border = 'none';
+        checkButton.style.borderRadius = '5px';
+        document.body.appendChild(checkButton);
+
+        checkButton.addEventListener('click', checkWord);
+    }
+
+    const buttonsContainer = document.createElement('div');
+    buttonsContainer.style.textAlign = 'center';
+    buttonsContainer.style.marginTop = '20px';
+    buttonsContainer.append(resetButton, clearButton, checkButton);
+    document.body.appendChild(buttonsContainer);
+    
+    // Word Box, Canvas setup, and other functions remain unchanged.
+});
+
+
     function fetchDailyGrid() {
         const today = new Date().toISOString().slice(0, 10);
         const gridUrl = 'https://raw.githubusercontent.com/wordybirdy/docs/main/grids.json';
@@ -193,74 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('totalScore').textContent = lettersUsed - wordsCreated;
     }
 
-    // Create Buttons
-    if (!document.getElementById('clearButton')) {
-        const clearButton = document.createElement('button');
-        clearButton.textContent = 'Clear';
-        clearButton.id = 'clearButton';
-        clearButton.style.margin = '15px';
-        clearButton.style.padding = '10px 20px';
-        clearButton.style.fontSize = '16px';
-        document.body.appendChild(clearButton);
-
-        clearButton.addEventListener('click', () => {
-            grid.flat().forEach(tile => tile.isPink = false);
-            wordBox = [];
-            drawBoard();
-            updateWordBox();
-        });
-    }
-
-    if (!document.getElementById('resetButton')) {
-        const resetButton = document.createElement('button');
-        resetButton.textContent = 'Reset';
-        resetButton.id = 'resetButton';
-        resetButton.style.margin = '15px';
-        resetButton.style.padding = '10px 20px';
-        resetButton.style.fontSize = '16px';
-        resetButton.style.backgroundColor = 'red';
-        resetButton.style.color = 'white';
-        resetButton.style.border = 'none';
-        resetButton.style.borderRadius = '5px';
-        document.body.appendChild(resetButton);
-
-        resetButton.addEventListener('click', () => {
-            grid.flat().forEach(tile => {
-                tile.isPink = false;
-                tile.isYellow = false;
-                tile.used = false;
-            });
-            recentWords = [];
-            wordBox = [];
-            updateRecentWordsList();
-            updateStats();
-            drawBoard();
-        });
-    }
-
-    if (!document.getElementById('checkButton')) {
-        const checkButton = document.createElement('button');
-        checkButton.textContent = 'Check';
-        checkButton.id = 'checkButton';
-        checkButton.style.margin = '15px';
-        checkButton.style.padding = '10px 20px';
-        checkButton.style.fontSize = '16px';
-        checkButton.style.backgroundColor = 'darkgreen';
-        checkButton.style.color = 'white';
-        checkButton.style.border = 'none';
-        checkButton.style.borderRadius = '5px';
-        document.body.appendChild(checkButton);
-
-        checkButton.addEventListener('click', checkWord);
-    }
-
-    const buttonsContainer = document.createElement('div');
-    buttonsContainer.style.textAlign = 'center';
-    buttonsContainer.style.marginTop = '20px';
-
-    buttonsContainer.append(resetButton, clearButton, checkButton);
-    document.body.appendChild(buttonsContainer);
-
+   
 
 
 const wordBoxDiv = document.createElement('div');
@@ -319,6 +348,7 @@ document.body.appendChild(wordBoxDiv);
             grid[x] = [];
             for (let y = 0; y < rows; y++) {
                 const randomLetter = letters[Math.floor(Math.random() * letters.length)];
+                
                 grid[x][y] = randomLetter;
             }
         }
