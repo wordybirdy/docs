@@ -10,7 +10,6 @@
 </head>
 
 <body>
-    <script src="./script.js"></script>
   <div class="header">
     <img src="https://drive.google.com/thumbnail?id=1V7-V05-PvsulCI-Hzjax-InaJkMClovm" alt="Game Header">
   </div>
@@ -32,7 +31,6 @@
   </div>
 
   <div id="stats">
-
     <table>
       <tr>
         <th>Letters Used</th>
@@ -47,11 +45,14 @@
     </table>
 
     <div id="totalScore">
-
       <div id="totalScore" style="font-size: 20px; font-weight: bold;"></div>
-
     </div>
   </div>
+
+  <!-- Added a div to wrap the buttons -->
+  <div id="buttonsContainer" style="text-align: center; margin-top: 20px;">
+    <!-- This container will hold the Clear, Check, and Reset buttons -->
+    <!-- These buttons will be dynamically created via JavaScript -->
   </div>
 
   <script src="game.js"></script>
