@@ -6,32 +6,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Match-3 Game</title>
   <link rel="stylesheet" href="style.css">
-  <script src="./script.js"></script>
+  <script src="./script.js" defer></script>
 </head>
 
 <body>
-  <div class="header">
+  <!-- Header -->
+  <header class="header">
     <img src="https://drive.google.com/thumbnail?id=1V7-V05-PvsulCI-Hzjax-InaJkMClovm" alt="Game Header">
-  </div>
+  </header>
 
-  <div id="gameContainerWrapper">
-
-    <div id="recentWordsBox">
+  <!-- Main Game Section -->
+  <main id="gameContainerWrapper">
+    <!-- Recent Words -->
+    <section id="recentWordsBox">
       <h3>Recent Words</h3>
       <ul id="recentWordsList"></ul>
-    </div>
-    <div id="gameContainer">
+    </section>
+
+    <!-- Game Canvas -->
+    <section id="gameContainer">
       <canvas id="gameCanvas" width="400" height="400"></canvas>
+    </section>
+  </main>
+
+  <!-- Scores and Stats -->
+  <section id="statsContainer">
+    <div id="scoreDisplay">
+      <div id="totalScoreWrapper">
+        <div id="totalScoreLabel">Total Score:</div>
+        <div id="totalScore">0</div>
+      </div>
+      <div id="dailyChallengeTopScoreWrapper">
+        <div id="dailyChallengeLabel">Daily Challenge Top Score:</div>
+        <div id="dailyChallengeTopScore">0</div>
+      </div>
     </div>
-  </div>
 
-  <div id="totalScoreWrapper">
-    <div id="totalScoreLabel">Total Score</div>
-    <div id="totalScore">0</div>
-  </div>
-
-  <div id="stats">
-    <table>
+    <table id="stats">
       <tr>
         <th>Letters Used</th>
         <th>Words Created</th>
@@ -43,28 +54,12 @@
         <td id="remainingLetters">0</td>
       </tr>
     </table>
+  </section>
 
-    <div id="totalScore">
-      <div id="totalScore" style="font-size: 20px; font-weight: bold;"></div>
-    </div>
-  </div>
-
-
-  <div id="totalScoreWrapper">
-  <div id="totalScoreLabel">Total Score</div>
-  <div id="totalScore">0</div>
-</div>
-
-
-
-
-  <!-- Added a div to wrap the buttons -->
-  <div id="buttonsContainer" style="text-align: center; margin-top: 20px;">
-    <!-- This container will hold the Clear, Check, and Reset buttons -->
-    <!-- These buttons will be dynamically created via JavaScript -->
-  </div>
-
-  <script src="game.js"></script>
+  <!-- Buttons -->
+  <section id="buttonsContainer">
+    <!-- Buttons will be dynamically added by JavaScript -->
+  </section>
 </body>
 
 </html>
