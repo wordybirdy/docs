@@ -1,58 +1,86 @@
-/* General Layout Fix */
+/* General Layout */
 body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
 }
 
-/* Ensure canvas and scores are aligned */
-#gameCanvas {
+/* Header */
+.header img {
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Game Container */
+#gameContainerWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    max-width: 800px;
+    width: 100%;
     margin-top: 20px;
+}
+
+#recentWordsBox {
+    width: 200px;
+}
+
+#gameContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Canvas */
+#gameCanvas {
     border: 2px solid #000;
 }
 
-/* Wrapper for total and daily scores */
-#scoreContainer {
+/* Scores and Stats */
+#statsContainer {
+    width: 90%;
+    max-width: 600px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+#totalScoreWrapper, #dailyChallengeTopScoreWrapper {
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+#stats {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#stats th, #stats td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+/* Buttons */
+#buttonsContainer {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    justify-content: center;
+    gap: 10px;
     width: 90%;
     max-width: 600px;
     margin-top: 20px;
 }
 
-/* Styling for total score */
-#totalScoreWrapper {
-    text-align: right;
-    margin-bottom: 5px;
-}
-
-/* Styling for daily top score */
-#dailyChallengeTopScoreWrapper {
-    text-align: right;
-}
-
-/* Buttons Styling */
-#practiceModeButton, #dailyChallengeButton {
+button {
     padding: 10px 20px;
     background-color: lightblue;
     border: 1px solid #ccc;
     border-radius: 5px;
-    cursor: pointer;
     font-size: 16px;
-    margin-top: 20px;
-}
-
-/* Button Container */
-.buttonContainer {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    max-width: 600px;
-    margin-top: 20px;
+    cursor: pointer;
 }
